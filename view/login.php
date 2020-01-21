@@ -1,72 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
+<title class="img-logo">Comunica UEMG </title> 
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/login.css">
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Login</title>
-
-  <!-- Custom fonts for this template-->
-  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-  <link href="../css/login.css" rel="stylesheet">
+<script>
+      
+    $(document).ready(function(){
+    $('.login-info-box').fadeOut();
+    $('.login-show').addClass('show-log-panel');
+});
 
 
+$('.login-reg-panel input[type="radio"]').on('change', function() {
+    if($('#log-login-show').is(':checked')) {
+        $('.register-info-box').fadeOut(); 
+        $('.login-info-box').fadeIn();
+        
+        $('.white-panel').addClass('right-log');
+        $('.register-show').addClass('show-log-panel');
+        $('.login-show').removeClass('show-log-panel');
+        
+    }
+    else if($('#log-reg-show').is(':checked')) {
+        $('.register-info-box').fadeIn();
+        $('.login-info-box').fadeOut();
+        
+        $('.white-panel').removeClass('right-log');
+        
+        $('.login-show').addClass('show-log-panel');
+        $('.register-show').removeClass('show-log-panel');
+    }
+});     
+    
+</script> 
 </head>
-<?php
-include_once "../funcoes/conexao.php"
 
-?>
 
-<body class="bg-gradient-primary">
-  <div class="container">
-    <!-- Outer Row -->
-    <div class="row justify-content-center main-section ">
-      <div class="col-md-7">
-        <div class="card o-hidden border-0 shadow-lg my-5">
-          <div class="row form-input">
-            <div class="col-lg-12">
-              <div class="p-5">
-                <div class="text-center">
-                  <h1 class="h4 text-gray-900 mb-4 mt-2">Bem vindo de volta!</h1>
-                </div>
-                <form class="user" method="post" action="../funcoes/verificaLogin.php">
-                  <div class="form-group col-sm-12 mt-2 ">
-                    <input type="text" class="form-control form-control-user"name="user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Digite o seu email..."required="">
-                  </div>
-                  <div class="form-group col-sm-12 ">
-                    <input type="password" class="form-control form-control-user"name ="pass"id="exampleInputPassword" placeholder="Digite sua senha..." required="">
-                  </div>
-                  <hr>
-                  <div class="form-group text-center">
-                  <button type="submit" class="btn btn-azul"style="width: 40%">Entrar</button>
-                  </div>
-                  
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<body >
+
+<div class="login-reg-panel">
+							
+		<div class="register-info-box">
+    <!-- <div>      
+            <span class="img-logo"> </span>            
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin-2.min.js"></script>
+     -->
+    <h2>Comunica UEMG</h2> 
+    
+    <h6> Ainda não é cadatrado?<a href="solicitaCadastro.php" style="color: white;text-decoration: underline;">&nbsp;Solicite seu cadastro </a> </h6>         
+		</div>
+							
+		<div class="white-panel">
+			<div class="login-show">
+        <h2>Entrar</h2>
+        <form action="../funcoes/verificaLogin.php" method="post"> 
+          <input type="text" placeholder="Nome de Usuario" name="user">
+          <input type="password" placeholder="Senha" name="pass">
+          <input type="submit" value="Entrar">
+          <a href="">Esqueceu sua senha?</a>
+        </form>
+			</div>
+			
+		</div>
+	</div>
 
 </body>
 

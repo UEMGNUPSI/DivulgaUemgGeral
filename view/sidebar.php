@@ -1,19 +1,7 @@
-<?php 
-session_start();
-if (!isset($_SESSION['login'])){
-    header('Location:login.php');
-}
-?>
-<style>
-  .disabled {
-    pointer-events:none; 
-    opacity:0.6;         
-}
-</style>
+
+
 <body id="page-top">
-  <?php 
-      $valor = isset($_SESSION['login']) ? '' : 'disabled';
-  ?> 
+  
   <!-- Page Wrapper -->
   <div id="wrapper" style="position: absolute; width: 100%">
 
@@ -36,30 +24,43 @@ if (!isset($_SESSION['login'])){
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Banners
+        <?php 
+            $nome_banner = $_GET['banner'];
+            echo $nome_banner;   
+        ?>
       </div>
 
   
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item " style="position: relative;">
-        <a class="nav-link collapsed"  href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-images"></i>
-          <span >Cadastrar</span>
+        <a class="nav-link collapsed"  href="#" data-toggle="collapse" data-target="#collapseUtilitiesUser" aria-expanded="true" aria-controls="collapseUtilitiesUser">
+        <i class="fas fa-users"></i>
+          <span >Usuários</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapseUtilitiesUser" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="addCategoriaBanner.php">Banners</a>
-            <a class="collapse-item" href="addImagemBanner.php">Imagens</a> 
+            <a class="collapse-item" href="consultaUsuario.php?banner=<?php echo $nome_banner; ?>">Consultar</a>
+                <div class="dropdown-divider"></div> 
+            <a class="collapse-item" href="#">Pendente</a> 
           </div>
         </div>
       </li>
-        <!-- Nav Item - Pages Collapse Menu -->
-       <li class="nav-item ">
-        <a class="nav-link" href="listarBanner.php">
-          <i class="far fa-eye"></i>
-          <span>Visualizar</span></a>
+
+      <li class="nav-item " style="position: relative;">
+        <a class="nav-link collapsed"  href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-images"></i>
+          <span >Banners</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="cadastrarUsuario.php?banner=<?php echo $nome_banner; ?>">Cadastrar</a>
+                <div class="dropdown-divider"></div> 
+            <a class="collapse-item" href="">Consultar</a> 
+          </div>
+        </div>
       </li>
+       
 
 
      
@@ -114,34 +115,24 @@ if (!isset($_SESSION['login'])){
             </li>
 
             <div class="topbar-divider d-none d-sm-block"></div>
-
-            <!-- Nav Item - User Information -->
-            <?php 
-      $valor = isset($_SESSION['login']) ? $_SESSION['login'] : 'LOGIN';
-    ?>
+         
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline  small" style="color: #FFFFFF"><?php echo $valor ?></span>
-                
+              <a class="nav-link dropdown-toggle" href="inicioReitoria.php" id="userDropdown" role="button">
+                <span class="mr-2 d-none d-lg-inline  small" style="color: #FFFFFF" title="Voltar"><i class="fas fa-arrow-left"></i></span>                
               </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <?php 
-                    if($valor == 'LOGIN'){ ?>
-                       <a class="dropdown-item" href="../view/login.php">
-                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>    
-                            Logar                
-                       </a>
-                <?php }else{ ?>
-                  
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                          Sair
-                    </a>
-               <?php } ?>           
-              </div>
             </li>
 
           </ul>
 
         </nav>
+      
+
+        <script src="../vendor/jquery/jquery.min.js"></script>
+   <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+</body>
+
+    

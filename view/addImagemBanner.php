@@ -15,7 +15,8 @@
     
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-  <script type="text/javascript" src="../js/buscaCategoriaBanner.js"></script>
+
+    <script type="text/javascript" src="../js/buscaCategoriaBanner.js"></script>
 </head>
 
 <?php include_once "sidebar.php"; ?>

@@ -1,6 +1,6 @@
 <?php                               
   $servername = "localhost";
-  $database = "projetobanner";
+  $database = "divulgauemggeral";
   $username = "root";
   $password = "";
                    
