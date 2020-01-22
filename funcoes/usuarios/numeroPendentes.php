@@ -1,0 +1,6 @@
+<?php
+include_once("../funcoes/conexao.php");
+$query = "SELECT COUNT(*) AS id from solicitacadsatro WHERE status = 0 and estado = 0";
+$executa = mysqli_query($conn, $query);
+$quantidade = mysqli_fetch_assoc($executa);
+echo $quantidade['id'];
