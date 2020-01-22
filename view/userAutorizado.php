@@ -23,11 +23,15 @@
           <td><?php echo $dados['cpf'] ?></td>
           <td>
             <button class="btn btn-primary mr-3 text-white" title="Excluir usuário" data-toggle="modal" data-target="#modalExcluirUsuario" type="button"><i class="fas fa-trash"></i></button>
-            <button class="btn btn-primary mr-3 text-white" title="Negar permissão" type="button">
+            <button class="btn btn-primary mr-3 text-white" title="Negar permissão" data-toggle="modal" data-target="#modalNegarUsuario" type="button">
               <i class="fas fa-user-times"></i></button>
           </td>
         </tr>
-        <? include("modalExcluirUsuario.php") ?>
+        <?
+        include("modalExcluirUsuario.php");
+        include("modalNegarPermissao.php")
+        ?>
+
       <?php } ?>
 
     </tbody>

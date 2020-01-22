@@ -135,12 +135,19 @@
     </div>
     <?php
     if (isset($_GET['mensagem']))
-      echo
-        '<div class="alert alert-success"role="alert">' . $_GET["mensagem"] . '
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>'
+      echo '
+      <div class="alert alert-success"role="alert">' . $_GET["mensagem"] . '
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>';
+    if (isset($_GET['erro']))
+      echo '
+      <div class="alert alert-danger"role="alert">' . $_GET["erro"] . '
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>'
     ?>
     <div class="col-xl-12 col-md-6 mb-4">
       <?php

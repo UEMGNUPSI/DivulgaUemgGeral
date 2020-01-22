@@ -22,7 +22,7 @@
           <td><?php echo $dados['cpf'] ?></td>
           <td>
             <button class="btn btn-primary mr-3" title="Excluir usuário" data-toggle="modal" data-target="#modalExcluirUsuario2 " type="button"><i class="fas fa-trash"></i></button>
-            <button class="btn btn-primary mr-3" title="Permitir acesso" type="button"><i class="fas fa-check-circle"></i></button>
+            <button class="btn btn-primary mr-3" title="Permitir acesso" data-toggle="modal" data-target="#modalPermitirUsuario" type="button"><i class="fas fa-check-circle"></i></button>
           </td>
         </tr>
         <div class="modal" tabindex="-1" role="dialog" id="modalExcluirUsuario2">
@@ -44,6 +44,7 @@
             </div>
           </div>
         </div>
+        <? include("modalAceitarPermissao.php") ?>
       <?php } ?>
 
     </tbody>
