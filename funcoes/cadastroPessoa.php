@@ -17,7 +17,7 @@
     
 
  
-     $sql = "INSERT INTO solicitacadsatro(nome,sobrenome,cpf,email,setor,unidade_id,descricao,tipo) VALUES ('$nome','$sobrenome','$cpf','$email','$setor','$id_unidade', '$descricao','$tipo')";
+     $sql = "INSERT INTO solicitacadsatro(nome,sobrenome,cpf,email,setor,unidade_id,descricao,tipo,status,estado) VALUES ('$nome','$sobrenome','$cpf','$email','$setor','$id_unidade', '$descricao','$tipo','0','0')";
      $query = mysqli_query($conn, $sql);
     
      if ($query) {

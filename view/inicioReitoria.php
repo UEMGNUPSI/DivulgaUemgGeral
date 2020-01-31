@@ -41,13 +41,7 @@
 
     <nav class="navbar navbar-inverse navbar-custom  navbar-fixed-top nav-color">
       <div class="container">
-      <?php
-        // Selecionando os id das unidaDes status=0
-        $sql = "SELECT count(*) as s from solicitacadsatro WHERE status = 0";
-        $sql = $conn->query($sql);
-        $sql = $sql->fetch_assoc();
-        $total = $sql['s'];
-      ?>
+     
         
 
         <div class="navbar-header">
@@ -59,15 +53,24 @@
 
         <div class="collapse navbar-collapse" id="barra-navegacao">
           <ul class="nav navbar-nav">
-            <li class='active'><a href="#">Reitoria</a></li>
+            <li class='active'><a href="inicioReitoria.php">Inicio</a></li>
+            
           </ul>
 
+          <?php            
+            $query = "SELECT COUNT(*) AS id from solicitacadsatro WHERE status = 0 and estado = 0";
+            $executa = mysqli_query($conn, $query);
+            $quantidade = mysqli_fetch_assoc($executa);
+            
+          ?>
+
           <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item dropdown">
-               <?php include('../dialog.php')?>             
-
-            </li>
-
+           <li class=''><a href="notificacoes.php">
+             <i class="fas fa-envelope"></i>                     
+              <span class="badge"><?php echo $quantidade['id']; ?></span>
+            </a>
+          </li>
+          
             <li>
               <form class="form-inline">
                 <div id="barra-pesquisa" class="input-group input-group-sm ">

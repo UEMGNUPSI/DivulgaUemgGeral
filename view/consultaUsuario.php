@@ -74,7 +74,7 @@
                 <a href="#" onclick="Mudarestado(true, false, false)">
                   <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Usuários Autorizados</div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
-                    <? include("../funcoes/usuarios/numeroPermitidos.php") ?>
+                    <?php include("../funcoes/usuarios/numeroPermitidos.php") ?>
                   </div>
               </div>
               <div class="col-auto">
@@ -95,7 +95,7 @@
                 <a href="#" onclick="Mudarestado(false, true, false)">
                   <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Usuários Negados</div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
-                    <? include("../funcoes/usuarios/numeroNegados.php") ?>
+                    <?php include("../funcoes/usuarios/numeroNegados.php") ?>
                   </div>
               </div>
               <div class="col-auto">
@@ -118,7 +118,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col-auto">
                       <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                        <? include("../funcoes/usuarios/numeroPendentes.php") ?>
+                        <?php include("../funcoes/usuarios/numeroPendentes.php") ?>
                       </div>
                     </div>
 
