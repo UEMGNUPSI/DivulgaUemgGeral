@@ -65,6 +65,13 @@ $('.login-reg-panel input[type="radio"]').on('change', function() {
           <a href="">Esqueceu sua senha?</a>
         </form>
 			</div>
+      <div style="color:red;">
+        <?php
+          if($_GET['l']){
+            echo $_GET['l'];
+          }
+        ?>
+      </div>
 			
 		</div>
 	</div>

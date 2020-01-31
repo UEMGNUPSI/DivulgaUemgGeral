@@ -11,9 +11,23 @@
     <tbody>
 
       <?php
-      $sql = "SELECT * from solicitacadsatro WHERE status=0 AND estado=0 ORDER BY nome ASC";
-      $consulta = mysqli_query($conn, $sql);
-
+       $unidade = $_GET['banner'];
+       $unidades = "SELECT * from unidade where unidades ='$unidade'";
+       $_executa = mysqli_query($conn, $unidades);
+       
+       while($resultado = mysqli_fetch_assoc($_executa)){
+           $idUnidade = $resultado['id'];
+           $nomeUnidade = $resultado['unidades'];
+           if ($nomeUnidade == $unidade) {
+             $sql = "SELECT * from solicitacadsatro WHERE status=0
+             AND estado=0
+             AND unidade_id = '$idUnidade' 
+             ORDER BY nome ASC
+             ";
+             $consulta = mysqli_query($conn, $sql);
+         }
+       }
+ 
       while ($dados = mysqli_fetch_assoc($consulta)) {
       ?>
         <tr>
