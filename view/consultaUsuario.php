@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -16,49 +19,53 @@
   <!-- Custom fonts for this template-->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+  </script>
 
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin-2.min.css" rel="stylesheet">
   <script>
-    function Mudarestado(autorizado, negado, pendente) {
+  function Mudarestado(autorizado, negado, pendente) {
 
-      if (autorizado && document.getElementById('autorizado').style.display === 'block') {
-        document.getElementById('autorizado').style.display = 'none';
-        document.getElementById('negado').style.display = 'none';
-        document.getElementById('pendente').style.display = 'none';
-      } else if (autorizado && document.getElementById('autorizado').style.display === 'none') {
-        document.getElementById('autorizado').style.display = 'block';
-        document.getElementById('negado').style.display = 'none';
-        document.getElementById('pendente').style.display = 'none';
-      }
-
-      if (negado && document.getElementById('negado').style.display === 'block') {
-        document.getElementById('autorizado').style.display = 'none';
-        document.getElementById('negado').style.display = 'none';
-        document.getElementById('pendente').style.display = 'none';
-      } else if (negado && document.getElementById('negado').style.display === 'none') {
-        document.getElementById('autorizado').style.display = 'none';
-        document.getElementById('negado').style.display = 'block';
-        document.getElementById('pendente').style.display = 'none';
-      }
-
-      if (pendente && document.getElementById('pendente').style.display === 'block') {
-        document.getElementById('autorizado').style.display = 'none';
-        document.getElementById('negado').style.display = 'none';
-        document.getElementById('pendente').style.display = 'none';
-      } else if (pendente && document.getElementById('pendente').style.display === 'none') {
-        document.getElementById('autorizado').style.display = 'none';
-        document.getElementById('negado').style.display = 'none';
-        document.getElementById('pendente').style.display = 'block';
-      }
-
+    if (autorizado && document.getElementById('autorizado').style.display === 'block') {
+      document.getElementById('autorizado').style.display = 'none';
+      document.getElementById('negado').style.display = 'none';
+      document.getElementById('pendente').style.display = 'none';
+    } else if (autorizado && document.getElementById('autorizado').style.display === 'none') {
+      document.getElementById('autorizado').style.display = 'block';
+      document.getElementById('negado').style.display = 'none';
+      document.getElementById('pendente').style.display = 'none';
     }
+
+    if (negado && document.getElementById('negado').style.display === 'block') {
+      document.getElementById('autorizado').style.display = 'none';
+      document.getElementById('negado').style.display = 'none';
+      document.getElementById('pendente').style.display = 'none';
+    } else if (negado && document.getElementById('negado').style.display === 'none') {
+      document.getElementById('autorizado').style.display = 'none';
+      document.getElementById('negado').style.display = 'block';
+      document.getElementById('pendente').style.display = 'none';
+    }
+
+    if (pendente && document.getElementById('pendente').style.display === 'block') {
+      document.getElementById('autorizado').style.display = 'none';
+      document.getElementById('negado').style.display = 'none';
+      document.getElementById('pendente').style.display = 'none';
+    } else if (pendente && document.getElementById('pendente').style.display === 'none') {
+      document.getElementById('autorizado').style.display = 'none';
+      document.getElementById('negado').style.display = 'none';
+      document.getElementById('pendente').style.display = 'block';
+    }
+
+  }
   </script>
 </head>
-<?php include_once "sidebar.php"; ?>
-<?php include_once "../funcoes/conexao.php"; ?>
+<?php include_once "sidebar.php";?>
+<?php include_once "../funcoes/conexao.php";?>
 
 <section class="content">
   <div class="container-fluid">
@@ -74,7 +81,7 @@
                 <a href="#" onclick="Mudarestado(true, false, false)">
                   <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Usuários Autorizados</div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
-                    <?php include("../funcoes/usuarios/numeroPermitidos.php") ?>
+                    <?php include "../funcoes/usuarios/numeroPermitidos.php"?>
                   </div>
               </div>
               <div class="col-auto">
@@ -95,7 +102,7 @@
                 <a href="#" onclick="Mudarestado(false, true, false)">
                   <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Usuários Negados</div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
-                    <?php include("../funcoes/usuarios/numeroNegados.php") ?>
+                    <?php include "../funcoes/usuarios/numeroNegados.php"?>
                   </div>
               </div>
               <div class="col-auto">
@@ -118,7 +125,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col-auto">
                       <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                        <?php include("../funcoes/usuarios/numeroPendentes.php") ?>
+                        <?php include "../funcoes/usuarios/numeroPendentes.php"?>
                       </div>
                     </div>
 
@@ -134,27 +141,32 @@
       </div>
     </div>
     <?php
-    if (isset($_GET['mensagem']))
-      echo '
-      <div class="alert alert-success"role="alert">' . $_GET["mensagem"] . '
+if (isset($_SESSION["msg"])) {
+    echo '
+      <div class="alert alert-success"role="alert">' . $_SESSION["msg"] . '
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>';
-    if (isset($_GET['erro']))
-      echo '
-      <div class="alert alert-danger"role="alert">' . $_GET["erro"] . '
+    unset($_SESSION["msg"]);
+}
+if (isset($_SESSION["erro"])) {
+    echo '
+      <div class="alert alert-danger"role="alert">' . $_SESSION["erro"] . '
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>'
-    ?>
+    ;
+    unset($_SESSION["erro"]);
+}
+?>
     <div class="col-xl-12 col-md-6 mb-4">
       <?php
-      include_once("userAutorizado.php");
-      include_once("userNegado.php");
-      include_once("userPendente.php");
-      ?>
+include_once "userAutorizado.php";
+include_once "userNegado.php";
+include_once "userPendente.php";
+?>
     </div>
   </div>
 </section>
