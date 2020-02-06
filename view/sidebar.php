@@ -34,17 +34,10 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item " style="position: relative;">
-        <a class="nav-link collapsed"  href="#" data-toggle="collapse" data-target="#collapseUtilitiesUser" aria-expanded="true" aria-controls="collapseUtilitiesUser">
+        <a class="nav-link collapsed"  href="consultaUsuario.php?banner=<?php echo $nome_banner; ?>" >
         <i class="fas fa-users"></i>
           <span >Usuários</span>
-        </a>
-        <div id="collapseUtilitiesUser" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="consultaUsuario.php?banner=<?php echo $nome_banner; ?>">Consultar</a>
-                <div class="dropdown-divider"></div> 
-            <a class="collapse-item" href="#">Pendente</a> 
-          </div>
-        </div>
+        </a>       
       </li>
 
       <li class="nav-item " style="position: relative;">
