@@ -1,5 +1,8 @@
 <?php
 session_start();
+$nomeBanner = $_GET['banner'];
+$_SESSION['banner'] = $nomeBanner;
+echo $_SESSION['banner'];
 ?>
 <!DOCTYPE html>
 <html lang="pt">

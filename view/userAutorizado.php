@@ -1,54 +1,35 @@
-<div id="autorizado" style="display: none;">
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Nome</th>
-        <th scope="col">Email</th>
-        <th scope="col">Cpf</th>
-        <th scope="col">Ação</th>
-      </tr>
-    </thead>
-    <tbody>
-
-      <?php
-      $unidade = $_GET['banner'];
-      $unidades = "SELECT * from unidade where unidades ='$unidade'";
-      $_executa = mysqli_query($conn, $unidades);
-      
-      while($resultado = mysqli_fetch_assoc($_executa)){
-          $idUnidade = $resultado['id'];
-          $nomeUnidade = $resultado['unidades'];
-          if ($nomeUnidade == $unidade) {
-            $sql = "SELECT * from solicitacadsatro WHERE status=1
-            AND estado=1
-            AND unidade_id = '$idUnidade' 
-            ORDER BY nome ASC
-            ";
-            $consulta = mysqli_query($conn, $sql);
-        }
-      }
-
-
-      while ($dados = mysqli_fetch_assoc($consulta)) {
-      ?>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+<div id="autorizado" class="mt-3" style="display: none;">
+  <div class="col-12">
+    <table class="table" style="width:100%" id="listarUsuarioAutorizado">
+      <thead class="thead-dark">
         <tr>
-          <td><?php echo $dados['nome'] . ' ' . $dados['sobrenome'] ?></td>
-          <td><?php echo $dados['email'] ?></td>
-          <td><?php echo $dados['cpf'] ?></td>
-          <td>
-  
-            <button class="btn btn-primary mr-3 text-white" title="Excluir usuário" data-toggle="modal" data-target="#modalExcluirUsuario" type="button"><i class="fas fa-trash"></i></button>
-            <button class="btn btn-primary mr-3 text-white" title="Negar permissão" data-toggle="modal" data-target="#modalNegarUsuario" type="button">
-              <i class="fas fa-user-times"></i></button>
-          </td>
+          <th scope="col">Nome</th>
+          <th scope="col">Email</th>
+          <th scope="col">Cpf</th>
+          <th scope="col">Ações</th>
         </tr>
-        <?
-        include("modalExcluirUsuario.php");
-        include("modalNegarPermissao.php")
-        ?>
-
-      <?php } ?>
-
-    </tbody>
-  </table>
+      </thead>
+    </table>
+  </div>
 </div>
+<?php
+  echo $_SESSION['banner'];
+    include("modalExcluirUsuario.php");
+    include("modalNegarPermissao.php")
+?>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js "></script>
+<script>
+$(document).ready(function() {
+  $('#listarUsuarioAutorizado').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": "../funcoes/usuarios/listarUsuariosAutorizados.php",
+      "type": "POST"
+    },
+  });
+});
+</script>
