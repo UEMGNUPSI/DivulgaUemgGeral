@@ -84,7 +84,17 @@
               </form>
             </li>
 
-            <li><a href="#" data-toggle="modal" data-target="#cadastro"> Cadastrar Unidades </a></li>
+            <li class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"href="notificacoes.php">
+              <i class="fas fa-list-ul"></i>                              
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" data-toggle="modal" data-target="#cadastro" href="#">Cadastrar Unidades</a>
+              <a class="dropdown-item" href="#">Consultar Unidades</a>
+            </div>                       
+          </li>
+
+          
 
           </ul>
         </div>
