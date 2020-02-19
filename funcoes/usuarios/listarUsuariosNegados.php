@@ -19,13 +19,13 @@ while ($resultado = mysqli_fetch_assoc($_executa)) {
     $nomeUnidade = $resultado['unidades'];
     if ($nomeUnidade == $unidade) {
         $sql = "SELECT COUNT(*) from solicitacadsatro WHERE status=1
-            AND estado=1
+            AND estado=0
             AND unidade_id = '$idUnidade'
             ";
         $consulta = mysqli_query($conn, $sql);
 
         $result_usuarios = "SELECT * from solicitacadsatro WHERE status=1
-            AND estado=1
+            AND estado=0
             AND unidade_id = '$idUnidade'";
     }
 }

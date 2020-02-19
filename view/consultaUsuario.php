@@ -2,23 +2,17 @@
 session_start();
 $nomeBanner = $_GET['banner'];
 $_SESSION['banner'] = $nomeBanner;
-echo $_SESSION['banner'];
 ?>
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
   <title>Comunica Uemg</title>
-
-
-
   <!-- Custom fonts for this template-->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -173,5 +167,28 @@ include_once "userPendente.php";
     </div>
   </div>
 </section>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js "></script>
+<script>
+$(document).ready(function() {
+  $('#listarUsuarioAutorizado').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": "../funcoes/usuarios/listarUsuariosAutorizados.php",
+      "type": "POST"
+    }
+  });
 
+  $('#listarUsuarioAutorizado').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": "../funcoes/usuarios/listarUsuariosNegados.php",
+      "type": "POST"
+    } 
+  });
+});
+</script>
 </html>
