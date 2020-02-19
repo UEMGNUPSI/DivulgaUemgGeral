@@ -21,7 +21,8 @@
   <link href="https://fonts.googleapis.com/css?family=Signika+Negative:300" rel="stylesheet">
 
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <style>
   body {
     background-image: linear-gradient(rgba(254, 254, 254, 0.4), rgba(254, 254, 254, 0.4)), url('../img/uemgfrutal2.svg');
@@ -30,9 +31,40 @@
     opacity: 1;
     filter: alpha(opacity=100);
   }
-  </style>
-</head>
+.dropdown-submenu {
+  position: relative;
+}
 
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+  </style>
+
+<script>
+  $(document).ready(function(){
+    $('.dropdown-submenu a.test').on("click", function(e){
+      $(this).next('ul').toggle();
+      e.stopPropagation();
+      e.preventDefault();
+    });
+  });
+
+  function Verificar()
+{
+ var tecla = window.event.keyCode;
+
+ if (tecla==13) { event.keyCode=0; event.returnValue=false;}
+
+ if (tecla==9) { event.keyCode=0; event.returnValue=false;}
+}
+
+
+</script>
+
+</head>
+<body onkeydown="Verificar()">
 <?php include_once "../funcoes/conexao.php"; ?>
 
 
@@ -84,26 +116,31 @@
               </form>
             </li>
 
-            <li class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"href="notificacoes.php">
+
+          <li class="dropdown">
+          <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"href="notificacoes.php">
               <i class="fas fa-list-ul"></i>                              
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" data-toggle="modal" data-target="#cadastro" href="#">Cadastrar Unidades</a>
-              <a class="dropdown-item" href="#">Consultar Unidades</a>
-            </div>                       
-          </li>
-
-          
-
+          </a>
+          <ul class="dropdown-menu">
+            <li><a tabindex="-1" href="#">Reitoria</a></li>
+            <li class="dropdown-submenu">
+              <a class="test" tabindex="-1" href="#">Unidades <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="#" data-toggle="modal" data-target="#cadastro">Cadastrar</a></li>
+                <li><a tabindex="-1" href="#">Consultar</a></li>          
+              </ul>
+            </li>
           </ul>
-        </div>
-      </div>
-    </nav>
+          </li>
+        </div>  
+      </ul>
+    </div>
+  </div>
+</nav>
+
     <div class="row" style="margin-top:50px;" id="resultado">
       <div class="col-12">
         <?php
-        session_start();
         $sql = "SELECT * FROM unidade WHERE id != 1 ORDER BY unidades";
         $consulta = mysqli_query($conn, $sql);
 
