@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 21-Jan-2020 às 18:16
+-- Generation Time: 21-Fev-2020 às 20:40
 -- Versão do servidor: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -21,6 +21,40 @@ SET time_zone = "+00:00";
 --
 -- Database: `divulgauemggeral`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `caminho_imagem`
+--
+
+CREATE TABLE `caminho_imagem` (
+  `id` int(11) NOT NULL,
+  `caminho` varchar(255) NOT NULL,
+  `nome_imagem` varchar(255) NOT NULL,
+  `unidade_id` int(11) NOT NULL,
+  `categoria_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `categoria_banner`
+--
+
+CREATE TABLE `categoria_banner` (
+  `id` int(11) NOT NULL,
+  `categoria` varchar(255) NOT NULL,
+  `position` varchar(255) NOT NULL,
+  `unidade_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `categoria_banner`
+--
+
+INSERT INTO `categoria_banner` (`id`, `categoria`, `position`, `unidade_id`) VALUES
+(6, 'Formação Acadêmica - Anfiteatro', 'Horizontal', 2);
 
 -- --------------------------------------------------------
 
@@ -70,7 +104,8 @@ INSERT INTO `unidade` (`id`, `unidades`) VALUES
 (1, 'REITORIA'),
 (2, 'UEMG Frutal'),
 (3, 'UEMG Ituiutaba'),
-(4, 'UEMG Divinopolis');
+(4, 'UEMG Divinopolis'),
+(6, 'UEMG Passos');
 
 -- --------------------------------------------------------
 
@@ -91,11 +126,29 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `user`, `pass`, `unidade_id`, `accessLevel`) VALUES
-(1, 'admin', 'admin', 1, 1);
+(1, 'admin', 'admin', 1, 1),
+(2, 'nupsi', 'nupsi', 1, 1),
+(3, 'pedro', 'pedro', 2, 2),
+(4, 'gabriel', '23002', 3, 2);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `caminho_imagem`
+--
+ALTER TABLE `caminho_imagem`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `unidade_id` (`unidade_id`),
+  ADD KEY `categoria_id` (`categoria_id`);
+
+--
+-- Indexes for table `categoria_banner`
+--
+ALTER TABLE `categoria_banner`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `unidade_id` (`unidade_id`);
 
 --
 -- Indexes for table `solicitacadsatro`
@@ -122,6 +175,18 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT for table `caminho_imagem`
+--
+ALTER TABLE `caminho_imagem`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `categoria_banner`
+--
+ALTER TABLE `categoria_banner`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `solicitacadsatro`
 --
 ALTER TABLE `solicitacadsatro`
@@ -131,17 +196,30 @@ ALTER TABLE `solicitacadsatro`
 -- AUTO_INCREMENT for table `unidade`
 --
 ALTER TABLE `unidade`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Limitadores para a tabela `caminho_imagem`
+--
+ALTER TABLE `caminho_imagem`
+  ADD CONSTRAINT `caminho_imagem_ibfk_1` FOREIGN KEY (`unidade_id`) REFERENCES `unidade` (`id`),
+  ADD CONSTRAINT `caminho_imagem_ibfk_2` FOREIGN KEY (`categoria_id`) REFERENCES `categoria_banner` (`id`);
+
+--
+-- Limitadores para a tabela `categoria_banner`
+--
+ALTER TABLE `categoria_banner`
+  ADD CONSTRAINT `categoria_banner_ibfk_1` FOREIGN KEY (`unidade_id`) REFERENCES `unidade` (`id`);
 
 --
 -- Limitadores para a tabela `solicitacadsatro`
