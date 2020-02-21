@@ -9,6 +9,7 @@ $_SESSION['login'] = $login;
 $result_usuario = "SELECT * FROM usuario WHERE user = '$login' AND pass = '$senha'  LIMIT 1";
 $resultado_usuario = mysqli_query($conn, $result_usuario);
 $resultado = mysqli_fetch_assoc($resultado_usuario);
+$_SESSION['unidade_id'] = $resultado['unidade_id'];
 
 if (isset($resultado)) { 
     if($resultado['accessLevel'] == 1)

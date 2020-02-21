@@ -1,5 +1,6 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
 
@@ -10,41 +11,12 @@
     <meta name="author" content="">
 
     <title>Banner</title>
-
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
-
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
     
-    <script type="text/javascript" language="javascript">
-        $(document).ready(function() {
-
-            /// Quando usuário clicar em salvar será feito todos os passo abaixo
-            $('#salvar').click(function() {
-                var dados = $('#cadCatBanner').serialize();
-                $.ajax({
-                    type: 'POST',
-                    dataType: 'json',
-                    url: '../funcoes/cadastraCategoriaBanner.php',
-                    async: true,
-                    data: dados,
-                    success: function(response) {
-                        if (response == '1') {
-                            $('#myModal').modal('show');
-                        } else if (response == '2') {
-                            $('#myModal2').modal('show');
-                        } else {
-                            $('#myModal3').modal('show');
-                        }
-                    }
-                });
-                return false;
-            });
-        });
-
+    <script> 
         function excluirModal() {
             $('#excluirModal').modal('show');
             event.preventDefault();
@@ -60,16 +32,20 @@
             event.preventDefault();
         }
     </script>
+   
 
 </head>
 
-<?php include_once "sidebar.php"; ?>
+<body id="page-top">
+<?php include_once "sideBarUnidade.php"; ?>
 <?php include_once "../funcoes/conexao.php"; ?>
+
+
 <div class="col-12 text-center my-5">
     <h1 style="font-weight: 330; color:#4F4F4F">Cadastro de Banners</h1>
     <div class="row mt-5">
         <div class="col-12">
-            <form method="post" id="cadCatBanner">
+            <form method="post" id="cadCatBanner" action="../funcoes/categoriaBanner/cadastrarCategoria.php">
                 <div class="form-row" style="width: 90%; padding:1%; margin:auto">
                     <div class="form-group text-left col-sm-6 ">
                         <label for="Banner">Banner:</label>
@@ -79,21 +55,41 @@
                 <div class="form-row" style="width: 90%; padding:1%; margin:auto">
                     <div class="form-group text-left col-sm-6  ">
                         <label for="inputTv">Posição da TV:</label>
-                        <select id="inputTv" class="form-control" name="inputTv">
-                            <option ></option>
-                            <option >Vertical</option>
+                        <select id="inputTv" class="form-control" name="inputTv">                          
                             <option >Horizontal</option>
+                            <option >Vertical</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-row" style="width: 90%;padding:1%;  margin:auto">
                     <div class="col-sm-6">
-                        <input id='salvar' class="btn " style="float:right;background-color:#3b6e8f;color: #FFFFFF" type="button" value="Cadastrar" />
+                        <button type="submit" class="btn" style="float:right;background-color:#3b6e8f;color: #FFFFFF">Cadastrar</button>
                     </div>
                 </div>
             </form>
 
+<?php
+    if (isset($_SESSION["msg"])) {
+        echo '
+        <div class="alert alert-success"role="alert">' . $_SESSION["msg"] . '
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>';
+        unset($_SESSION["msg"]);
+    }
+    if (isset($_SESSION["erro"])) {
+        echo '
+        <div class="alert alert-danger"role="alert">' . $_SESSION["erro"] . '
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>'
+        ;
+        unset($_SESSION["erro"]);
+    }
+?>
 
             <div class="table-responsive" style="width: 90%; padding:1%; margin:20px auto">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -104,12 +100,12 @@
                     </thead>
 
                     <?php
-                    $sql = "SELECT * FROM categoria_banner ORDER BY categoria_banner ASC";
+                    $sql = "SELECT * FROM categoria_banner ORDER BY categoria ASC";
                     $consulta = mysqli_query($conn, $sql);
                     while ($dados = mysqli_fetch_assoc($consulta)) {
                         echo "<tbody>";
                         echo "<tr>";
-                        echo "<td>" . $dados['categoria_banner'] . "</td>";
+                        echo "<td>" . $dados['categoria'] . "</td>";
                         echo "<td>" . $dados['position'] . "</td>";
                         echo "<td>";
 
@@ -128,14 +124,17 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja excluir este Banner</h5>
+                                    <div class="d-flex">
+                                    <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja excluir esta categoria de Banner</h5>
                                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
                                         </button>
+                                    </div>                                                                          
                                     </div>
-                                    <div class="modal-footer">
+                                    <h6 class="modal-title">Todas as imagens vinculadas a esta categoria serão perdidas</h6>
+                                    <div class="modal-footer" style=" background: transparent;border: none;">                                       
                                         <form>
-                                            <a class="btn btn-danger mr-auto" href="../funcoes/excluirCategoria.php?id=<?php echo $dados['id']; ?>">Sim, eu quero!</a>
+                                            <a class="btn btn-danger mr-auto" type="submit" href="../funcoes/categoriaBanner/excluiCategoria.php?id=<?php echo $dados['id']; ?>">Sim, eu quero!</a>
                                             <button class="btn btn-primary" type="button" data-dismiss="modal">Ops! Não quero!</button>
                                         </form>
                                     </div>
@@ -168,21 +167,22 @@
                                         <h5 class="modal-title" id="exampleModalLabel">Alterar Nome do Banner</h5>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="post" action="../funcoes/editarCategoria.php">
+                                        <form method="post" action="../funcoes/categoriaBanner/editarCategoria.php">
                                             <?php
                                                 $Id = $dados['id'];
                                                 $sql2 = "SELECT * FROM curso WHERE id='$Id'";
                                                 $consulta2 = mysqli_query($conn, $sql2);
                                                 ?>
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="col-form-label">Alterar:</label>
-                                                <input type="text" class="form-control" id="nome_banner" name="nome_banner" placeholder="<?php echo $dados['categoria_banner']; ?>">
+                                            <div class="form-row" style="width: 90%; padding:1%; margin:auto">
+                                                <div class="form-group text-left col-sm-12">
+                                                    <label for="recipient-name" class="col-form-label">Alterar:</label>
+                                                    <input type="text" class="form-control" id="nome_banner" name="nome_banner" placeholder="<?php echo $dados['categoria']; ?>">
+                                                </div>
                                             </div>
                                             <div class="form-row" style="width: 90%; padding:1%; margin:auto">
                                                 <div class="form-group text-left col-sm-6  ">
                                                     <label for="inputTv">Posição da TV:</label>
-                                                    <select id="inputTv" class="form-control" name="inputTv">
-                                                        <option ></option>
+                                                    <select id="inputTv" class="form-control" name="editaPosition">
                                                         <option >Vertical</option>
                                                         <option >Horizontal</option>
                                                     </select>
@@ -191,7 +191,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
-                                        <input type="hidden" name="categoria_banner" value="<?php echo $dados['categoria_banner']; ?>">
+                                        <input type="hidden" name="categoria_banner" value="<?php echo $dados['categoria']; ?>">
                                         <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Fechar</button>
                                         <button type="submit" class="btn btn-primary">Alterar</button>
                                     </div>
@@ -205,47 +205,17 @@
         </div>
     </div>
 </div>
-<!-- Cadastro Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Banner cadastrado com Sucesso!</h4>
-            </div>
-            <div class="modal-footer">
-                <a class="text-white" href="" onClick="history.go(0)"><button type="button" class="btn btn-info">Voltar</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal já Cadastrado -->
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Banner já cadastrado!</h4>
-            </div>
-            <div class="modal-footer">
-                <a href="addCategoriaBanner.php"><button type="button" class="btn btn-danger">Voltar</button></a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal caso campo esteja vazio -->
-<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Complete corretamente o campo de cadastro!</h4>
-            </div>
-            <div class="modal-footer">
-                <a href="addCategoriaBanner.php"><button type="button" class="btn btn-danger">Voltar</button></a>
-            </div>
-        </div>
-    </div>
-</div>
 
 
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="../js/sb-admin-2.min.js"></script>
 
 
-<?php include_once  "footer.php"; ?>
+</body>
+</html>
+

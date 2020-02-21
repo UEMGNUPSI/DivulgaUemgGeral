@@ -122,7 +122,7 @@
               <i class="fas fa-list-ul"></i>                              
           </a>
           <ul class="dropdown-menu">
-            <li><a tabindex="-1" href="#">Reitoria</a></li>
+            <li><a tabindex="-1" href="controleReitoria.php">Reitoria</a></li>
             <li class="dropdown-submenu">
               <a class="test" tabindex="-1" href="#">Unidades <span class="caret"></span></a>
               <ul class="dropdown-menu">

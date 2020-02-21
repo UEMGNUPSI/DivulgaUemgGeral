@@ -20,8 +20,7 @@
 
     <script type="text/javascript" src="../js/buscaCategoriaBanner.js"></script>
 </head>
-
-<?php include_once "sidebar.php"; ?>
+<?php include_once "sideBarUnidade.php"; ?>
 <?php include_once "../funcoes/conexao.php"; ?>
 
 
