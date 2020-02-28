@@ -93,7 +93,7 @@
   $caminho = '../documentos/' . $nome_banner . '/';
   $img = glob($caminho . '*{jpg,png,gif}', GLOB_BRACE);
   $contador = count($img);
-  $numImagem = 5;
+  $numImagem = 4;
   if ($contador == $numImagem) {
     $disabled = 'disabled';
   } else {
@@ -154,17 +154,24 @@ $caminho = '../documentos/' . $nome_banner . '/';
 $img = glob($caminho . '*{jpg,png,gif}', GLOB_BRACE);
 $contador = count($img);
 
-$loopHorizontal = 5;
+$loopHorizontal = 4;
 
 ?>
 <form id="ExcluirImg" class="ml-4">
   <div class="form-row" style="justify-content:left;margin-top:50px;margin-left: 10px;">
 <?php
+   $unidade = '1';
+   $sql = "SELECT * FROM caminho_imagem WHERE unidade_id = $unidade";
+   $consulta = mysqli_query($conn, $sql);
+   $dados = mysqli_fetch_assoc($consulta);
+  
 
     if($contador == 0){
       echo "<div style='margin: 0 auto;color: FireBrick;font-weight: bold;'>
                 <p>Ainda não foram cadastrados imagens neste banner!</p>
             </div>";
+     
+          
     }   
 
   for ($i = 0; $i < $contador; $i++) {
@@ -182,7 +189,11 @@ $loopHorizontal = 5;
           </div>
         </div>
       </div>";         
-
+      ?>
+      <div id='mostrarImagem' class='form-row ml-4' style='width: 150px; height: 150px;display: block;border-radius: 5px;align-items: center;margin-right: 2%;'>          
+    <a > <img  src='<?php echo $dados['caminho'].$dados['nome_imagem']; ?>' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #FF0000;' /> </a>
+   </div>
+   <?php
     if ($contador <= $loopHorizontal) {
 
       echo "
@@ -198,8 +209,7 @@ $loopHorizontal = 5;
 ";
     }
   }
-
-    ?>
+   ?>
   </div>
 </form>
 <form method="POST" id="excluirTodasImagens">

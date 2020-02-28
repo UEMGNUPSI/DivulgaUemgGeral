@@ -30,9 +30,7 @@
   </style>
 </head>
 <?php  include_once "sidebar.php";
-   $nomeBanner = $_GET['banner'];
-   $_SESSION['banner'] = $nomeBanner;
-   echo $_SESSION['banner'];
+ 
 ?>
 
 </html>

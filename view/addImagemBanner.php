@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,9 +43,8 @@
       <div class="row" id="resultado">
 
         <?php
-
-
-        $sql = "SELECT * FROM categoria_banner";
+        $unidade = $_SESSION['unidade_id'];
+        $sql = "SELECT * FROM categoria_banner WHERE unidade_id = $unidade";
         $consulta = mysqli_query($conn, $sql);
 
         while ($dados = mysqli_fetch_assoc($consulta)) {

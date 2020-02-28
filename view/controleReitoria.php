@@ -64,17 +64,11 @@
       </li>
 
       <li class="nav-item " style="position: relative;">
-        <a class="nav-link collapsed"  href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+      <a class="nav-link collapsed"  href="bannerReitoria.php" >
           <i class="fas fa-images"></i>
           <span >Banners</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="cadastrarUsuario.php?banner=<?php echo $nome_banner; ?>">Cadastrar</a>
-                <div class="dropdown-divider"></div> 
-            <a class="collapse-item" href="">Consultar</a> 
-          </div>
-        </div>
+       
       </li>
        
 

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -18,9 +21,7 @@
   <!-- FONTES -->
   <script type="text/javascript" src="../js/buscaCategoriaBanner.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:700" rel="stylesheet">
-
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <style>
   body {
@@ -118,7 +119,9 @@
                 <li><a tabindex="-1" href="addImagemBanner.php">Imagem</a></li>          
               </ul>
             </li>
+            <li style="font-family: Helvetica, sans-serif;background:rgba(60, 110, 143, 0.96);"><a href="#" style="color: white;" data-toggle="modal" data-target="#sair">Sair</a></li>
           </ul>
+        
           </li>
         </div>  
       </ul>
@@ -126,7 +129,7 @@
   </div>
 </nav>  
 <?php
-session_start();
+
 $unidade = $_SESSION['unidade_id'];
     $sql = "SELECT * FROM unidade WHERE id = $unidade";
     $consulta = mysqli_query($conn, $sql);
@@ -155,6 +158,38 @@ $unidade = $_SESSION['unidade_id'];
 
 </div>
 </div>
+
+<form class="modal fade" id="sair" method="post" action="../funcoes/logout.php">
+    <div class="modal-dialog" id='teste'>
+
+      <div class="modal-content">
+
+        <div id="Logar" class="tab">
+
+          <div class="modal-header" style="background-color: rgba(60, 110, 143, 0.96);">
+            <button class="close" data-dismiss="modal"><span>&times;</span></button>
+            <h4 class="modal-title" style="color: white"><span id="icon-login" class="glyphicon glyphicon-log-out"
+                style="padding-right: 8px;color: white;"></span>Deseja mesmo sair?</h4>
+          </div>
+
+          
+
+        </div>
+
+        <!-- rodape -->
+        <div class="modal-footer">
+          <div class="col-md-12">
+            <button class="btn-custom btn-logar" type="submit">Sim!</button>
+            <button class="btn-custom btn-danger" data-dismiss="modal">Ops, não quero!</button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </form>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
