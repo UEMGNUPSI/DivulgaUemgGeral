@@ -40,7 +40,7 @@
   </li>
     <!-- Nav Item - Pages Collapse Menu -->
    <li class="nav-item ">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="listarBanner.php">
       <i class="far fa-eye"></i>
       <span>Visualizar</span></a>
   </li>

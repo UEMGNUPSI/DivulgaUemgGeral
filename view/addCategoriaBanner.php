@@ -153,7 +153,7 @@
                                     <div class="modal-footer">
                                         <form>
                                             <button class="btn btn-secondary mr-auto" type="button" data-dismiss="modal">Ops! Não quero!</button>
-                                            <a class="btn btn-primary" href="../view/uploadImagem.php?banner=<?php echo $dados['categoria_banner']; ?>">Sim, eu quero!</a>
+                                            <a class="btn btn-primary" href="../view/uploadImagem.php?banner=<?php echo $dados['categoria']; ?>">Sim, eu quero!</a>
                                         </form>
                                     </div>
                                 </div>

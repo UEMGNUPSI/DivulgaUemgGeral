@@ -17,8 +17,8 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <script type="text/javascript" src="../js/buscaCategoriaBanner.js"></script>
 </head>
-
-<?php include_once "sidebar.php"; ?>
+<body>
+<?php include_once "sideBarUnidade.php"; ?>
 <?php include_once "../funcoes/conexao.php"; ?>
 
 
@@ -47,8 +47,8 @@
                 while ($dados = mysqli_fetch_assoc($consulta)) {
                     ?>
                     <form action="post" class="col-5">
-                        <input type="hidden" name="banner" value="<?php echo $dados['categoria_banner']; ?>">
-                        <button type="submit" class="btn btn-primary ml-5 mb-3" formaction="caroussel.php" style="width: 100%;background-color: #3b6e8f; color: #FFFFFF"><?php echo $dados['categoria_banner']; ?></button>
+                        <input type="hidden" name="banner" value="<?php echo $dados['categoria']; ?>">
+                        <button type="submit" class="btn btn-primary ml-5 mb-3" formaction="caroussel.php" style="width: 100%;background-color: #3b6e8f; color: #FFFFFF"><?php echo $dados['categoria']; ?></button>
                     </form>
                 <?php } ?>
 
@@ -61,4 +61,13 @@
 </div>
 
 </div>
-<?php include_once  "footer.php"; ?>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="../js/sb-admin-2.min.js"></script>
+</body>
+</html>

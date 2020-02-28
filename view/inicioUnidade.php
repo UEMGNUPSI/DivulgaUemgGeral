@@ -110,7 +110,7 @@
               <i class="fas fa-list-ul"></i>                              
           </a>
           <ul class="dropdown-menu">
-            <li><a tabindex="-1" href="controleReitoria.php">Banners</a></li>
+            <li><a tabindex="-1" href="listarBanner.php">Banners</a></li>
             <li class="dropdown-submenu">
               <a class="test" tabindex="-1" href="#">Cadastrar <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -133,24 +133,24 @@ $unidade = $_SESSION['unidade_id'];
     $dados = mysqli_fetch_assoc($consulta)
 ?>      
 <div class="col-12 text-center my-5">
-    <h1 style="font-weight: 330; color:#4F4F4F"><?php echo $dados['unidades'] ?></h1>
-    <h2 style="font-weight:200; color:#A9A9A9;font-size:25px">(Você ainda não tem nenhum banner cadastrado para esta unidade)</h2>
+    <h1 style="font-weight: 330; color:#4F4F4F;font-family:Bradley Hand, cursive;"><?php echo $dados['unidades'] ?></h1> 
+    <!-- <h2 style="font-weight:200; color:#A9A9A9;font-size:25px">(Você ainda não tem nenhum banner cadastrado para esta unidade)</h2>  -->
 
-    <!-- <div class="row" style="margin-top:50px;" id="resultado">
+    <div class="row" style="margin-top:50px;" id="resultado">
         <div class="col-12"> 
             <?php
-                $sql = "SELECT * FROM categoria_banner ORDER BY categoria_banner";
+                $sql = "SELECT * FROM categoria_banner WHERE unidade_id=$unidade ORDER BY categoria";
                 $consulta = mysqli_query($conn, $sql);
 
                 while ($dados = mysqli_fetch_assoc($consulta)) {
                     ?>
                     <form action="post" class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 ">
-                        <input type="hidden" name="banner" class="" value="<?php echo $dados['categoria_banner']; ?>">
-                        <button type="submit" class="btn mb-3" formaction="caroussel.php" style="width: 100%; margin-bottom:15px;background-color: rgba(60, 110, 143, 0.96);color: white"><?php echo $dados['categoria_banner']; ?></button>              
+                        <input type="hidden" name="banner" class="" value="<?php echo $dados['categoria']; ?>">
+                        <button type="submit" class="btn mb-3" formaction="caroussel.php" style="width: 100%; margin-bottom:15px;background-color: rgba(60, 110, 143, 0.96);color: white"><?php echo $dados['categoria']; ?></button>              
                     </form>
             <?php } ?>                        
         </div>
-    </div>   -->
+    </div>  
 </div>
 
 </div>
