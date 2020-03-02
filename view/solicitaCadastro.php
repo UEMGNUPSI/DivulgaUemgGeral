@@ -8,12 +8,51 @@
     <meta name="viewport" content="width=device-width" />
 
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="../assets/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
+    <link href="../assets/css/demo.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    
+    <script>  $(document).ready(function() {
 
-	<link href="../assets/css/demo.css" rel="stylesheet" />
+/// Quando usuário clicar em salvar será feito todos os passo abaixo
+$('#finish').click(function() {
+    var dados = $('#solicitaCadastro').serialize();
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url: '../funcoes/cadastroPessoa.php',
+        async: true,
+        data: dados,
+        success: function(response) {
+            if (response == '1') {
+                $('#myModal').modal('show');
+            } else if (response == '2') {
+                $('#myModal2').modal('show');
+            } else {
+                $('#myModal3').modal('show');
+            }
+        }
+    });
+    return false;
+});
+});
+
+function mascara(i){
+   
+   var v = i.value;
+   
+   if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
+      i.value = v.substring(0, v.length-1);
+      return;
+   }
+   
+   i.setAttribute("maxlength", "14");
+   if (v.length == 3 || v.length == 7) i.value += ".";
+   if (v.length == 11) i.value += "-";
+
+}
+    </script>
 </head>
 
 <body>    
@@ -28,12 +67,12 @@
             <div class="wizard-container">
 
                 <div class="card wizard-card" data-color="orange" id="wizardProfile">
-                    <form action="../funcoes/cadastroPessoa.php" method="post">
+                    <form action="../funcoes/cadastroPessoa.php" method="post" id="solicitaCadastro">
               
                     	<div class="wizard-header">
                         	<h3>
                         	   <b>Comunica</b> UEMG <br>
-                        	   <small>Solicite seu cadastro para poder acesso  aos banners de sua unidade!</small>
+                        	   <small>Solicite seu cadastro para controlar os banners de sua unidade!</small>
                         	</h3>
                     	</div>
 
@@ -53,19 +92,19 @@
                                   <div class="col-sm-5 col-sm-offset-1">
                                   <div class="form-group">
                                         <label>Nome <small>*</small></label>
-                                        <input name="nome" type="text" class="form-control" placeholder="">
+                                        <input name="nome" type="text" class="form-control" placeholder="" minlength="1" maxlength="50">
                                       </div>
                                   </div>
                                   <div class="col-sm-5">                                      
                                       <div class="form-group">
                                         <label> Sobrenome</label> <small>*</small></label>
-                                        <input name="sobrenome" type="text" class="form-control" placeholder=".">
+                                        <input name="sobrenome" type="text" class="form-control" placeholder="." minlength="1" maxlength="255">
                                       </div>
                                   </div>
                                   <div class="col-sm-5 col-sm-offset-1">
                                   <div class="form-group">
                                         <label>CPF <small>*</small></label>
-                                        <input name="cpf" type="text" class="form-control" placeholder="">
+                                        <input name="cpf" type="text" class="form-control" placeholder="" id="cpf" maxlength="11" oninput="mascara(this)">
                                       </div>
                                   </div>
                                   <div class="col-sm-10 col-sm-offset-1">
@@ -73,7 +112,8 @@
                                           <label>Email <small>*</small></label>
                                           <input name="email" type="email" class="form-control" placeholder="">
                                       </div>
-                                  </div>
+                                                                            
+                              </div>
                               </div>
                             </div>
                             <div class="tab-pane" id="account">
@@ -142,15 +182,15 @@
                                     <div class="col-sm-10 col-sm-offset-1">
                                          <div class="form-group">
                                             <label>Setor: </label>
-                                            <input type="text" class="form-control" placeholder="" name="setor">
+                                            <input type="text" class="form-control" placeholder="" name="setor" minlength="1" maxlength="50">
                                           </div>
                                     </div>                                                                 
                                 </div>
                                 <div class="row">                                   
                                     <div class="col-sm-10 col-sm-offset-1">
                                          <div class="form-group">
-                                            <label for="textarea1">Motivos para se ter um cadatro; </label>
-                                            <textarea class="form-control" id="textarea1" rows="3" name="descricao"></textarea>
+                                            <label for="textarea1">Explique o motivo para ter um cadatro: </label>
+                                            <textarea class="form-control" id="textarea1" rows="1" name="descricao"></textarea>
                                           </div>
                                     </div>                                                                 
                                 </div>
@@ -162,7 +202,7 @@
                             <div class="pull-right">
                                 <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Próximo' />
                                 <!-- <input type='submit' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Solicitar' /> -->
-                                <button type='submit' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Solicitar' formaction="../funcoes/cadastroPessoa.php">Solicita Cadastro</button> 
+                            <button type='submit' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' id='finish' >Solicita Cadastro</button> 
 
                             </div>
 
@@ -179,7 +219,37 @@
         </div>
     </div> 
 
-   
+    <div class="modal" tabindex="-1" role="dialog" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">SOLICITAÇÃO REALIZADA COM SUCESSO!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>O Administrador irá avaliar seu cadastro.Você pode acompanhar todo processo pelo seu email!</p>
+      </div>
+      <div class="modal-footer">
+      <a class="text-white btn btn-info" type="button" href="login.php" >Ok</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Não foi possivel realizar seu cadastro! </h4>
+              </div>
+              <div class="modal-footer">
+                <a class="text-white btn btn-info" type="button" href="login.php" >Voltar</a>
+              </div>
+            </div>
+          </div>
+        </div>
 
 </div>
 

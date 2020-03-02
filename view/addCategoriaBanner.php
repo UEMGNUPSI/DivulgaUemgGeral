@@ -100,7 +100,7 @@
                     </thead>
 
                     <?php
-                    $sql = "SELECT * FROM categoria_banner ORDER BY categoria ASC";
+                    $sql = "SELECT * FROM categoria_banner WHERE id != 1";
                     $consulta = mysqli_query($conn, $sql);
                     while ($dados = mysqli_fetch_assoc($consulta)) {
                         echo "<tbody>";

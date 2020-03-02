@@ -21,9 +21,9 @@
      $query = mysqli_query($conn, $sql);
     
      if ($query) {
-         header('Location: ../view/login.php');
+        echo 1;
      }else{
-         echo "erro";
+        echo 2;
      }       
 
     
