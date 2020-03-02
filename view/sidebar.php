@@ -1,7 +1,6 @@
 
 
-<body id="page-top">
-  
+
   <!-- Page Wrapper -->
   <div id="wrapper" style="position: absolute; width: 100%">
 
@@ -41,17 +40,11 @@
       </li>
 
       <li class="nav-item " style="position: relative;">
-        <a class="nav-link collapsed"  href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+      <a class="nav-link collapsed"  href="consultaBanner.php?banner=<?php echo $nome_banner; ?>" >       
           <i class="fas fa-images"></i>
           <span >Banners</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="cadastrarUsuario.php?banner=<?php echo $nome_banner; ?>">Cadastrar</a>
-                <div class="dropdown-divider"></div> 
-            <a class="collapse-item" href="">Consultar</a> 
-          </div>
-        </div>
+      
       </li>
        
 
@@ -126,6 +119,6 @@
   <!-- Core plugin JavaScript-->
   <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-</body>
+
 
     
