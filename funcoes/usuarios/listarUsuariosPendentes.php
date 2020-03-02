@@ -18,13 +18,13 @@ while ($resultado = mysqli_fetch_assoc($_executa)) {
     $idUnidade = $resultado['id'];
     $nomeUnidade = $resultado['unidades'];
     if ($nomeUnidade == $unidade) {
-        $sql = "SELECT COUNT(*) from solicitacadsatro WHERE status=1
+        $sql = "SELECT COUNT(*) from solicitacadsatro WHERE status=0
             AND estado=0
             AND unidade_id = '$idUnidade'
             ";
         $consulta = mysqli_query($conn, $sql);
 
-        $result_usuarios = "SELECT * from solicitacadsatro WHERE status=1
+        $result_usuarios = "SELECT * from solicitacadsatro WHERE status=0
             AND estado=0
             AND unidade_id = '$idUnidade'";
     }
@@ -53,15 +53,19 @@ while ($row_usuarios = mysqli_fetch_array($resultado_usuarios)) {
     $dado[] = $row_usuarios["nome"] .' '. $row_usuarios["sobrenome"];
     $dado[] = $row_usuarios["email"];
     $dado[] = $row_usuarios["cpf"];
+$btnExcluir = '<a class="btn btn-primary mr-3 text-white" title="Excluir usuário" 
+href="../funcoes/usuarios/excluiUsuario.php?banner='.$unidade.'&id='.$row_usuarios["id"].'" 
+onclick="return confirm('.'\'Deseja realmente apagar este usuário?'.'\')"><i class="fas fa-trash"></i></a>';
+
+$btnNegarPermissao = '<a class="btn btn-primary mr-3 text-white" title="Negar permissão" 
+href="../funcoes/usuarios/negaUsuario.php?banner='.$unidade.'&id='.$row_usuarios["id"].'" 
+onclick="return confirm('.'\'Deseja realmente negar o acesso para este usuário?'.'\')"><i class="fas fa-user-times"></i></a>';
+
 $btnPermitir = '<a class="btn btn-primary mr-3 text-white" title="Permitir usuário" 
 href="../funcoes/usuarios/permiteUsuario.php?banner='.$unidade.'&id='.$row_usuarios["id"].'" 
 onclick="return confirm('.'\'Deseja realmente permitir o acesso para usuário?'.'\')"><i class="fas fa-check-circle"></i></a>';
 
-$btnExcluir = '<a class="btn btn-primary mr-3 text-white" title="Excluir solicitação" 
-href="../funcoes/usuarios/excluiUsuario.php?banner='.$unidade.'&id='.$row_usuarios["id"].'" 
-onclick="return confirm('.'\'Deseja realmente excluir esta solicitação de usuário?'.'\')"><i class="fas fa-trash"></i></a>';
-
-    $dado[] = $btnExcluir . $btnPermitir;
+    $dado[] = $btnExcluir . $btnNegarPermissao . $btnPermitir;
     $dados[] = $dado;
 }
 

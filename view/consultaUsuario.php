@@ -168,7 +168,7 @@ include_once "userPendente.php";
   </div>
 </section>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="../js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js "></script>
 <script>
 $(document).ready(function() {
@@ -181,11 +181,20 @@ $(document).ready(function() {
     }
   });
 
-  $('#listarUsuarioAutorizado').DataTable({
+  $('#listarUsuarioNegado').DataTable({
     "processing": true,
     "serverSide": true,
     "ajax": {
       "url": "../funcoes/usuarios/listarUsuariosNegados.php",
+      "type": "POST"
+    } 
+  });
+
+  $('#listarUsuarioPendente').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": "../funcoes/usuarios/listarUsuariosPendentes.php",
       "type": "POST"
     } 
   });
