@@ -101,6 +101,10 @@ $(document).ready(function(){
                 $($wizard).find('.btn-next').show();
                 $($wizard).find('.btn-finish').hide();
             }
+            if($current !== 1) {
+                console.log($current)
+                $($wizard).find('.btn-cancelar').hide();
+            }
 
             button_text = navigation.find('li:nth-child(' + $current + ') a').html();
 

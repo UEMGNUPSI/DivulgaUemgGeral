@@ -62,13 +62,9 @@ function mascara(i){
     <div class="container">
         <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-
-      
             <div class="wizard-container">
-
                 <div class="card wizard-card" data-color="orange" id="wizardProfile">
                     <form action="../funcoes/cadastroPessoa.php" method="post" id="solicitaCadastro">
-              
                     	<div class="wizard-header">
                         	<h3>
                         	   <b>Comunica</b> UEMG <br>
@@ -82,9 +78,7 @@ function mascara(i){
 	                            <li><a href="#account" data-toggle="tab">Cargo</a></li>
 	                            <li><a href="#address" data-toggle="tab">Unidade</a></li>
 	                        </ul>
-
 						</div>
-
                         <div class="tab-content">
                             <div class="tab-pane" id="about">
                               <div class="row">
@@ -111,8 +105,7 @@ function mascara(i){
                                       <div class="form-group">
                                           <label>Email <small>*</small></label>
                                           <input name="email" type="email" class="form-control" placeholder="">
-                                      </div>
-                                                                            
+                                      </div>                                              
                               </div>
                               </div>
                             </div>
@@ -194,8 +187,6 @@ function mascara(i){
                                           </div>
                                     </div>                                                                 
                                 </div>
-
-
                             </div>
                         </div>
                         <div class="wizard-footer height-wizard">
@@ -205,7 +196,9 @@ function mascara(i){
                             <button type='submit' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' id='finish' >Solicita Cadastro</button> 
 
                             </div>
-
+                            <div class="btn-cancelar">
+                                <a class="btn btn-default btn-fill  btn-wd btn-sm" href="javascript:history.go(-1)" onclick="return confirm('Deseja voltar para o login?')">Voltar</a>
+                            </div>
                             <div class="pull-left">
                                 <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Voltar' />
                             </div>
@@ -218,8 +211,7 @@ function mascara(i){
         </div>
         </div>
     </div> 
-
-    <div class="modal" tabindex="-1" role="dialog" id="myModal">
+<div class="modal" tabindex="-1" role="dialog" id="myModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
