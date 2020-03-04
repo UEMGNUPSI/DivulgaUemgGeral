@@ -11,22 +11,58 @@
 
   <title>Banner</title>
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+  <!-- <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
   <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
 
+  <!-- FONTES -->
+  <script type="text/javascript" src="../js/buscaCategoriaBanner.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Signika+Negative:300" rel="stylesheet">
+  <link href="../img/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icom" />
 
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <style>
-    body {
-      background-image: linear-gradient(rgba(254, 254, 254, 0.4), rgba(254, 254, 254, 0.4)), url('../img/uemgfrutal2.svg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      opacity: 1;
-      filter: alpha(opacity=100);
-    }
+  body {
+    background-image: linear-gradient(rgba(254, 254, 254, 0.4), rgba(254, 254, 254, 0.4)), url('../img/uemgfrutal2.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1;
+    filter: alpha(opacity=100);
+  }
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
   </style>
+
+<script>
+  $(document).ready(function(){
+    $('.dropdown-submenu a.test').on("click", function(e){
+      $(this).next('ul').toggle();
+      e.stopPropagation();
+      e.preventDefault();
+    });
+  });
+
+  function Verificar()
+{
+ var tecla = window.event.keyCode;
+
+ if (tecla==13) { event.keyCode=0; event.returnValue=false;}
+
+ if (tecla==9) { event.keyCode=0; event.returnValue=false;}
+}
+
+
+</script>
 </head>
 
 <?php include_once "../funcoes/conexao.php"; ?>
@@ -35,31 +71,41 @@
 <div class="container no">
   <div class="col-12">
 
-    <nav class="navbar navbar-inverse navbar-custom  navbar-fixed-top nav-color">
+  <nav class="navbar navbar-inverse navbar-custom  navbar-fixed-top nav-color">
       <div class="container">
-      <?php
-        // Selecionando os id das unidaDes status=0
-        $sql = "SELECT count(*) as s from solicitacadsatro WHERE status = 0";
-        $sql = $conn->query($sql);
-        $sql = $sql->fetch_assoc();
-        $total = $sql['s'];
-      ?>
-        
+
+
 
         <div class="navbar-header">
-          <a href="index.php" class="navbar-brand">
+          <a href="inicioReitoria.php" class="navbar-brand">
             <span class="img-logo">UEMG </span>
           </a>
 
         </div>
 
         <div class="collapse navbar-collapse" id="barra-navegacao">
-          <ul class="nav navbar-nav">
-            <li class='active'><a href="inicioReitoria.php">Inicio</a></li>
-            
+          <ul class="nav navbar-nav navbar-right">    
+          <li class="dropdown">
+          <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"href="notificacoes.php">
+              <i class="fas fa-list-ul"></i>                              
+          </a>
+          <ul class="dropdown-menu">
+            <li><a tabindex="-1" href="controleReitoria.php">Reitoria</a></li>
+            <li class="dropdown-submenu">
+              <a class="test" tabindex="-1" href="#">Unidades <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="#" data-toggle="modal" data-target="#cadastro">Cadastrar</a></li>
+                <li><a tabindex="-1" href="#">Consultar</a></li>          
+              </ul>
+            </li>
+            <li><a tabindex="-1" href="../funcoes/logout.php" style="background-color: rgba(60, 110, 143, 0.96);color: white;">Sair</a></li>
           </ul>
-
-    </nav>
+          </li>
+        </div>  
+      </ul>
+    </div>
+  </div>
+</nav>
 
     <div class="row" style="margin-top:50px;" id="resultado">
       <div class="col-12">
@@ -162,8 +208,6 @@
     </div>
 
   </div>
-
-
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 

@@ -6,7 +6,7 @@
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
-
+    <link href="../img/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icom" />
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="../assets/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
@@ -191,14 +191,14 @@ function mascara(i){
                         </div>
                         <div class="wizard-footer height-wizard">
                             <div class="pull-right">
-                                <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Próximo' />
+                            <input type='button' class='btn btn-cancela btn-fill btn-danger btn-wd btn-sm ' name='btn-cancela' id="btn-cancela" value='Cancelar' data-toggle="modal" data-target="#modalCancelar" />                                                                 
+
+                                <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Próximo' />                               
                                 <!-- <input type='submit' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Solicitar' /> -->
                             <button type='submit' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' id='finish' >Solicita Cadastro</button> 
 
                             </div>
-                            <div class="btn-cancelar">
-                                <a class="btn btn-default btn-fill  btn-wd btn-sm" href="javascript:history.go(-1)" onclick="return confirm('Deseja voltar para o login?')">Voltar</a>
-                            </div>
+                           
                             <div class="pull-left">
                                 <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Voltar' />
                             </div>
@@ -225,6 +225,23 @@ function mascara(i){
       </div>
       <div class="modal-footer">
       <a class="text-white btn btn-info" type="button" href="login.php" >Ok</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="modalCancelar">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Deseja mesmo cancelar seu cadastro?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>     
+      <div class="modal-footer">
+      <a class="text-white btn btn-danger" type="button" href="login.php" >Sim, Eu Quero!</a>
+      <a class="text-white btn btn-info" type="button" data-dismiss="modal">Ops, Não Quero!</a>
       </div>
     </div>
   </div>

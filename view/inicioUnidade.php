@@ -17,6 +17,7 @@ session_start();
   <!-- <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
   <link rel="stylesheet" type="text/css" href="../css/estilo.css">
   <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+  <link href="../img/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icom" />
 
   <!-- FONTES -->
   <script type="text/javascript" src="../js/buscaCategoriaBanner.js"></script>

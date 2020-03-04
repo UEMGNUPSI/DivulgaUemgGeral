@@ -19,6 +19,7 @@
   <script type="text/javascript" src="../js/buscaCategoriaBanner.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Signika+Negative:300" rel="stylesheet">
+  <link href="../img/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icom" />
 
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   
@@ -77,17 +78,14 @@
 
 
         <div class="navbar-header">
-          <a href="index.php" class="navbar-brand">
+          <a href="inicioReitoria.php" class="navbar-brand">
             <span class="img-logo">UEMG </span>
           </a>
 
         </div>
 
         <div class="collapse navbar-collapse" id="barra-navegacao">
-          <ul class="nav navbar-nav">
-            <li class='active'><a href="inicioReitoria.php">Inicio</a></li>
-
-          </ul>
+          
 
           <?php            
             $query = "SELECT COUNT(*) AS id from solicitacadsatro WHERE status = 0 and estado = 0";
@@ -130,6 +128,7 @@
                 <li><a tabindex="-1" href="#">Consultar</a></li>          
               </ul>
             </li>
+            <li><a tabindex="-1" href="#" style="background-color: rgba(60, 110, 143, 0.96);color: white;" data-target="#sair" data-toggle="modal">Sair</a></li>
           </ul>
           </li>
         </div>  
@@ -159,9 +158,36 @@
 
     </div>
   </div>
+  
+  <form class="modal fade" id="sair" method="post" action="../funcoes/logout.php">
+    <div class="modal-dialog" id='teste'>
 
+      <div class="modal-content">
 
+        <div id="Logar" class="tab">
 
+          <div class="modal-header" style="background-color: rgba(60, 110, 143, 0.96);">
+            <button class="close" data-dismiss="modal"><span>&times;</span></button>
+            <h4 class="modal-title" style="color: white"><span id="icon-login" class="glyphicon glyphicon-log-out"
+                style="padding-right: 8px;color: white;"></span>Deseja mesmo sair?</h4>
+          </div>
+
+          
+
+        </div>
+
+        <!-- rodape -->
+        <div class="modal-footer">
+          <div class="col-md-12">
+            <button class="btn-custom btn-logar" type="submit">Sim!</button>
+            <button class="btn-custom btn-danger" data-dismiss="modal">Ops, não quero!</button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </form>
 
   <form class="modal fade" id="cadastro" method="post" action="../funcoes/cadastroUnidades.php">
     <div class="modal-dialog" id='teste'>
