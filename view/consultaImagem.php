@@ -31,44 +31,39 @@ $nomeBanner = $_GET['banner'];
   
 <?php include_once "sidebar.php";?>
 <?php include_once "../funcoes/conexao.php";?>
+<?php
+$sql = "SELECT * FROM unidade WHERE unidades = '$nomeBanner'";
+$consulta = mysqli_query($conn, $sql);
+$dados = mysqli_fetch_assoc($consulta);  
+$id_banner = $dados['id'];
+?>
+
   <div class="col-12 text-center my-5">
     <h1 style="font-weight: 330; color:#4F4F4F">Imagens Banner</h1>
-    <h2 style="font-weight:200; color:#A9A9A9;font-size:25px">(Estas são as categoria cadastradas nesta unidade)</h2>
-    <div class="row">
+    <h2 style="font-weight:200; color:#A9A9A9;font-size:25px">(Estas são as imagens cadastradas nesta unidade)</h2>
 
-    <div class="col-12">
+<form id="ExcluirImg" class="ml-4">
+  <div class="form-row" style="justify-content:left;margin-top:50px;margin-left: 10px;">
+  <?php
+    $sql = "SELECT * FROM caminho_imagem WHERE unidade_id = '$id_banner'";
+    $consulta = mysqli_query($conn, $sql);
+    $dados = mysqli_fetch_assoc($consulta); 
 
-      <form class="form-inline mb-3 ">
-        <input class="form-control ml-5" type="search" placeholder="Buscar..." id="buscanome" onkeyup="buscarCategoriaBanner(this.value)">
-      </form>
+    $caminho = $dados['caminho'];
+    $img = glob($caminho . '*{jpg,png,gif}', GLOB_BRACE);
+    $contador = count($img);
 
-      <div class="row" id="resultado">
+    if($contador == 0){
+      echo "<div style='margin: 0 auto;color: FireBrick;font-weight: bold;'>
+                <p>Ainda não foram cadastrados imagens neste banner!</p>
+            </div>";                                                                                                                                                                       
+    }else{   
+ ?>
+      <div id='mostrarImagem' class='form-row ml-4' style='width: 150px; height: 150px;display: block;border-radius: 5px;align-items: center;margin-right: 2%;'>          
+    <a > <img  src='<?php echo $dados['caminho'].$dados['nome_imagem']; ?>' style='width:150px;height: 150px;border-width: 6px;border-style: dashed;border-color: #000000;' /> </a>
+   </div>
+<?php } ?>
+</form>
 
-      <?php      
-        $sqlID = "SELECT * FROM unidade WHERE unidades = '$nomeBanner'";
-        $pesquisa = mysqli_query($conn, $sqlID);
-        $dado = mysqli_fetch_assoc($pesquisa);
-
-        $unidade = $dado['id'];
-        $sql = "SELECT * FROM categoria_banner WHERE unidade_id = $unidade";
-        $consulta = mysqli_query($conn, $sql);
-
-        while ($dados = mysqli_fetch_assoc($consulta)) {
-          ?>
-          <form action="post" class="col-5">
-            <input type="hidden" name="id_banner" value="<?php echo $dados['id']; ?>">
-            <input type="hidden" name="banner" value="<?php echo $nomeBanner; ?>">
-            <input type="hidden" name="nome" value="<?php echo $dados['categoria']; ?>">
-            <button type="submit" class="btn  ml-5 mb-3" formaction="consultaImagem.php" style="width: 100%;background-color: #3b6e8f; color: #FFFFFF"><?php echo $dados['categoria']; ?></button>
-          </form>
-        <?php } ?>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
 </body>
 </html>

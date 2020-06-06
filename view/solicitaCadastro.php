@@ -52,6 +52,30 @@ function mascara(i){
    if (v.length == 11) i.value += "-";
 
 }
+
+function limpa() {
+if(document.getElementById('nome').value!="") {
+document.getElementById('nome').value="";
+document.getElementById('sobrenome').value="";
+document.getElementById('cpf').value="";
+document.getElementById('email').value="";
+document.getElementById('setor').value="";
+document.getElementById('textarea1').value="";
+
+window.location.href = "login.php";
+}
+}
+
+function limpa2() {
+if(document.getElementById('nome').value!="") {
+document.getElementById('nome').value="";
+document.getElementById('sobrenome').value="";
+document.getElementById('cpf').value="";
+document.getElementById('email').value="";
+document.getElementById('setor').value="";
+document.getElementById('textarea1').value="";
+}
+}
     </script>
 </head>
 
@@ -86,25 +110,25 @@ function mascara(i){
                                   <div class="col-sm-5 col-sm-offset-1">
                                   <div class="form-group">
                                         <label>Nome <small>*</small></label>
-                                        <input name="nome" type="text" class="form-control" placeholder="" minlength="1" maxlength="50">
+                                        <input name="nome" id="nome" type="text" class="form-control" placeholder="" minlength="1" maxlength="50">
                                       </div>
                                   </div>
                                   <div class="col-sm-5">                                      
                                       <div class="form-group">
                                         <label> Sobrenome</label> <small>*</small></label>
-                                        <input name="sobrenome" type="text" class="form-control" placeholder="." minlength="1" maxlength="255">
+                                        <input name="sobrenome" id="sobrenome" type="text" class="form-control" placeholder="." minlength="1" maxlength="255">
                                       </div>
                                   </div>
                                   <div class="col-sm-5 col-sm-offset-1">
                                   <div class="form-group">
                                         <label>CPF <small>*</small></label>
-                                        <input name="cpf" type="text" class="form-control" placeholder="" id="cpf" maxlength="11" oninput="mascara(this)">
+                                        <input name="cpf" id="cpf" type="text" class="form-control" placeholder="" id="cpf" maxlength="11" oninput="mascara(this)">
                                       </div>
                                   </div>
                                   <div class="col-sm-10 col-sm-offset-1">
                                       <div class="form-group">
                                           <label>Email <small>*</small></label>
-                                          <input name="email" type="email" class="form-control" placeholder="">
+                                          <input name="email" id="email" type="email" class="form-control" placeholder="">
                                       </div>                                              
                               </div>
                               </div>
@@ -116,7 +140,7 @@ function mascara(i){
                                     <div class="col-sm-10 col-sm-offset-1">
                                         <div class="col-sm-4">
                                             <div class="choice" data-toggle="wizard-checkbox">
-                                                <input type="checkbox" name="tipo" value="estagiario">
+                                                <input type="checkbox" name="tipo" id="tipo" value="estagiario">
                                                 <div class="icon">
                                                     <i class="fas fa-user-graduate"></i>
                                                 </div>
@@ -175,7 +199,7 @@ function mascara(i){
                                     <div class="col-sm-10 col-sm-offset-1">
                                          <div class="form-group">
                                             <label>Setor: </label>
-                                            <input type="text" class="form-control" placeholder="" name="setor" minlength="1" maxlength="50">
+                                            <input type="text" class="form-control" placeholder="" id="setor" name="setor" minlength="1" maxlength="50">
                                           </div>
                                     </div>                                                                 
                                 </div>
@@ -193,9 +217,9 @@ function mascara(i){
                             <div class="pull-right">
                             <input type='button' class='btn btn-cancela btn-fill btn-danger btn-wd btn-sm ' name='btn-cancela' id="btn-cancela" value='Cancelar' data-toggle="modal" data-target="#modalCancelar" />                                                                 
 
-                                <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Próximo' />                               
+                                <input type='button' class='btn btn-next btn-fill  btn-wd btn-sm' name='next' value='Próximo' style='background-color: rgba(60, 110, 143, 0.96);border: 1px solid #3B6E8F'/>                               
                                 <!-- <input type='submit' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Solicitar' /> -->
-                            <button type='submit' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' id='finish' >Solicita Cadastro</button> 
+                            <button type='submit' class='btn btn-finish btn-fill btn-wd btn-sm' name='finish' onClick="limpa2()" id='finish' style='background-color: rgba(60, 110, 143, 0.96);border: 1px solid #3B6E8F'>Solicita Cadastro</button> 
 
                             </div>
                            
@@ -240,7 +264,7 @@ function mascara(i){
         </button>
       </div>     
       <div class="modal-footer">
-      <a class="text-white btn btn-danger" type="button" href="login.php" >Sim, Eu Quero!</a>
+      <a class="text-white btn btn-danger" type="button" href="#" onClick="limpa()">Sim, Eu Quero!</a>
       <a class="text-white btn btn-info" type="button" data-dismiss="modal">Ops, Não Quero!</a>
       </div>
     </div>

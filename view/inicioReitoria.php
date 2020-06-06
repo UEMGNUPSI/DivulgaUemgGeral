@@ -20,7 +20,6 @@
   <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Signika+Negative:300" rel="stylesheet">
   <link href="../img/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icom" />
-
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -158,7 +157,7 @@
 
     </div>
   </div>
-  
+  <!-- Modal LogOUt -->
   <form class="modal fade" id="sair" method="post" action="../funcoes/logout.php">
     <div class="modal-dialog" id='teste'>
 
@@ -179,8 +178,8 @@
         <!-- rodape -->
         <div class="modal-footer">
           <div class="col-md-12">
-            <button class="btn-custom btn-logar" type="submit">Sim!</button>
-            <button class="btn-custom btn-danger" data-dismiss="modal">Ops, não quero!</button>
+            <button class="btn-custom btn-logar" type="submit" style="min-width: 20%;">Sim!</button>
+            <button class="btn-custom btn-danger" data-dismiss="modal" style="color:white">Ops, não quero!</button>
           </div>
 
         </div>
@@ -189,6 +188,7 @@
     </div>
   </form>
 
+<!-- Cadastro de Unidades -->
   <form class="modal fade" id="cadastro" method="post" action="../funcoes/cadastroUnidades.php">
     <div class="modal-dialog" id='teste'>
 
@@ -198,7 +198,7 @@
 
           <div class="modal-header" style="background-color: rgba(60, 110, 143, 0.96);">
             <button class="close" data-dismiss="modal"><span>&times;</span></button>
-            <h4 class="modal-title" style="color: white"><span id="icon-login" class="glyphicon glyphicon-user"
+            <h4 class="modal-title" style="color: white"><span id="icon-login" class="glyphicon glyphicon-home"
                 style="padding-right: 8px;color: white;"></span>Cadastrar Unidade</h4>
 
 
@@ -212,7 +212,7 @@
             </div>
             <div class="col-md-6" style="margin-bottom: 5px;">
               <div class="form-group">
-                <label for="email"><span id="icon-email-pass" class="glyphicon glyphicon-user"></span>Unidade</label>
+                <label for="email"><span id="icon-email-pass" class="glyphicon glyphicon-home"></span>Unidade</label>
                 <input id='email' type="text" class="form-login" id="campo_usuario" name="user" />
 
               </div>
@@ -237,6 +237,8 @@
       </div>
     </div>
   </form>
+
+  
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 

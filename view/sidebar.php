@@ -1,18 +1,28 @@
 
+  <style>
+    .img-logo{
+	background-image: url(../img/UEMG-Logo.png);
+	background-repeat: no-repeat;
 
+	height: 40px;
+	width: 132px;
+	display: block;
+	background-size: contain;
+	color: transparent;
+
+	margin-top: -9px;
+}
+  </style>
 
   <!-- Page Wrapper -->
   <div id="wrapper" style="position: absolute; width: 100%">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav sidebar sidebar-dark accordion " style="background-color:#2e5064"  id="accordionSidebar" >
+    <ul class="navbar-nav sidebar sidebar-dark accordion " style="background: rgba(60, 110, 143, 0.96);"  id="accordionSidebar" >
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="far fa-file-image"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">Comunica Uemg</div>
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="inicioReitoria.php">
+            <span class="img-logo">UEMG </span>         
       </a>
 
       <!-- Divider -->
@@ -53,10 +63,7 @@
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
+      
 
     </ul>
     <!-- End of Sidebar -->
@@ -68,12 +75,9 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow"style="background-color: #2e5064">
+        <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow"style=" background: rgba(60, 110, 143, 0.96);">
 
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
+         
 
          
 
@@ -100,13 +104,7 @@
               </div>
             </li>
 
-            <div class="topbar-divider d-none d-sm-block"></div>
-         
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="inicioReitoria.php" id="userDropdown" role="button">
-                <span class="mr-2 d-none d-lg-inline  small" style="color: #FFFFFF" title="Voltar"><i class="fas fa-arrow-left"></i></span>                
-              </a>
-            </li>
+            
 
           </ul>
 
